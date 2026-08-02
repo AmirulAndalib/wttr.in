@@ -14,7 +14,11 @@ var windDirectionSymbols = []string{
 	"↓", "↙", "←", "↖", "↑", "↗", "→", "↘",
 }
 
-var windDirectionSymbolsWI = []string{
+var windDirectionSymbolsDumb = []string{
+	"↓", "╯", "←", "╮", "↑", "╭", "→", "╰",
+}
+
+var windDirectionSymbolsWi = []string{
 	"", "", "", "", "", "", "", "",
 }
 
@@ -50,11 +54,15 @@ func drawWind(dirs []int, speeds []float64, opts *options.Options) string {
 		return "\n\n"
 	}
 
+	dumb := opts.Dumb
 	// Choose symbol set based on view (matches Python logic)
-	useWI := opts.View == "v2n" || opts.View == "v2d"
+	useWi := opts.View == "v2n" || opts.View == "v2d"
+
 	var symbols []string
-	if useWI {
-		symbols = windDirectionSymbolsWI
+	if dumb {
+		symbols = windDirectionSymbolsDumb
+	} else if useWi {
+		symbols = windDirectionSymbolsWi
 	} else {
 		symbols = windDirectionSymbols
 	}

@@ -12,7 +12,28 @@ import (
 )
 
 // windDir returns ANSI-colored arrow for wind direction.
-func windDir() map[string]string {
+func windDir(dumb bool) map[string]string {
+	if dumb {
+		return map[string]string{
+			"N":   "\033[1m↓\033[0m",
+			"NNE": "\033[1m↓\033[0m",
+			"NE":  "\033[1m╯\033[0m",
+			"ENE": "\033[1m╯\033[0m",
+			"E":   "\033[1m←\033[0m",
+			"ESE": "\033[1m←\033[0m",
+			"SE":  "\033[1m╮\033[0m",
+			"SSE": "\033[1m╮\033[0m",
+			"S":   "\033[1m↑\033[0m",
+			"SSW": "\033[1m↑\033[0m",
+			"SW":  "\033[1m╭\033[0m",
+			"WSW": "\033[1m╭\033[0m",
+			"W":   "\033[1m→\033[0m",
+			"WNW": "\033[1m→\033[0m",
+			"NW":  "\033[1m╰\033[0m",
+			"NNW": "\033[1m╰\033[0m",
+		}
+	}
+
 	return map[string]string{
 		"N":   "\033[1m↓\033[0m",
 		"NNE": "\033[1m↓\033[0m",
@@ -243,7 +264,7 @@ func (r *V1Renderer) formatWind(c cond, opts *options.Options) string {
 	if gust > speed {
 		return r.pad(
 			fmt.Sprintf("%s %s%s%s %s",
-				windDir()[c.Winddir16Point],
+				windDir(opts.Dumb)[c.Winddir16Point],
 				cWindSpeed, hyphen, cWindGust,
 				unitWindString),
 			15)
@@ -251,7 +272,7 @@ func (r *V1Renderer) formatWind(c cond, opts *options.Options) string {
 
 	return r.pad(
 		fmt.Sprintf("%s %s %s",
-			windDir()[c.Winddir16Point],
+			windDir(opts.Dumb)[c.Winddir16Point],
 			cWindSpeed,
 			unitWindString),
 		15)
