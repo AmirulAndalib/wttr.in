@@ -66,8 +66,12 @@ func RenderWind(ctx *RenderContext) string {
 	var dir string
 
 	dirIndex := getWindDirectionIndex(ctx.Data.WindDirDegree)
+	dumb := ctx.Options.Dumb
+	useWi := ctx.Options.View == "v2n" || ctx.Options.View == "v2d"
 
-	if ctx.Options.View == "v2n" || ctx.Options.View == "v2d" {
+	if dumb {
+		dir = WindDirectionDumb[dirIndex]
+	} else if useWi {
 		dir = WindDirectionWi[dirIndex]
 	} else {
 		dir = WindDirection[dirIndex]

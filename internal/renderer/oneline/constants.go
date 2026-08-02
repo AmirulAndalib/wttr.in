@@ -144,6 +144,13 @@ var WindDirection = [8]string{
 	"↑", "↗", "→", "↘",
 }
 
+// WindDirectionDumb contains 8 cardinal arrow symbols for terminals without fallback glyphs
+var WindDirectionDumb = [8]string{
+	"↓", "╯", "←", "╮",
+	"↑", "╭", "→", "╰",
+}
+
+
 // MoonPhases contains the 8 main moon phase emojis
 var MoonPhases = [8]string{
 	"🌑", "🌒", "🌓", "🌔",
