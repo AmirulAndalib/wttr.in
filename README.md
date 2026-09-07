@@ -727,6 +727,18 @@ You can now access your instance at `http://your-server:8080` (e.g. `http://your
 
 For production, create a systemd service. Cache and logs are stored under `/wttr.in/cache` and `/wttr.in/log`.
 
+## Acknowledgments
+
+### OpenCage
+
+![opencage logo](share/pics/opencage-logo.png)
+
+The wttr.in project thanks **[OpenCage](https://opencagedata.com/)** for geolocation data provided through the **OpenCage Geocoding API**.
+
+OpenCage is used to resolve place names — cities, landmarks, stations, and other locations — into coordinates and normalized addresses. That lookup is what makes queries such as `wttr.in/London` and `wttr.in/~Eiffel+Tower` possible.
+
+We are grateful to the OpenCage team for reliable geocoding, an accessible API, and support for open tools that bring weather reports to the terminal.
+
 ## wttr.in usage stats
 
 As of April 2026, *wttr.in* handles around 100 million queries per day from 400,000 to 450,000 users, according to the access logs.
